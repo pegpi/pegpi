@@ -1,0 +1,16 @@
+{# http://flask.pocoo.org/docs/1.0/tutorial/templates/ #}
+{% extends 'base.html' %}
+
+{% block title %}
+PEGPI - Chiffrement RSA
+{% endblock %}
+
+{% block pageclass %}page-rsa{% endblock %}
+
+{% block content %}
+<h1>Le Chiffrement RSA</h1>
+<figure>
+    <img src="{{ url_for('static', filename='220px-RSA.jpg') }}" alt="Chiffrement RSA">
+    <figcaption>A compléter</figcaption>
+</figure>
+{% endblock %}

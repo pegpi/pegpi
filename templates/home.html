@@ -1,0 +1,26 @@
+{# http://flask.pocoo.org/docs/1.0/tutorial/templates/ #}
+{% extends 'base.html' %}
+
+{% block title %}
+PEGPI - Accueil
+{% endblock %}
+
+{% block pageclass %}page-home{% endblock %}
+
+{% block content %}
+<div id="figures">
+    <figure>
+        <a href='/cesar'><img src="{{ url_for('static', filename='cesar_200px.png') }}" alt="Chiffre de César"></a>
+        <figcaption>A compléter</figcaption>
+    </figure>
+    <figure>
+        <a href='/vigenere'><img src="{{ url_for('static', filename='vigenere_200px.png') }}"
+                alt="Chiffre de Vigenère"></a>
+        <figcaption>Blaise de Vigenère<br />(source wikipedia)</figcaption>
+    </figure>
+    <figure>
+        <a href='/rsa'><img src="{{ url_for('static', filename='rsa_200px.png') }}" alt="Chiffrement RSA"></a>
+        <figcaption>A compléter</figcaption>
+    </figure>
+</div>
+{% endblock %}

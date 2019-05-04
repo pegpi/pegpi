@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <!-- copier/coller modèle html5 vscode -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+  <div id="page" class="{% block pageclass %}{% endblock %}">
+    <nav>
+      <a href='/'>Accueil</a>
+      <a href='/cesar'>César</a>
+      <a href='/vigenere'>Vigenère</a>
+      <a href='/rsa'>RSA</a>
+    </nav>
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    <section class="content">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+    <footer>
+        <p><a id="retour-accueil" href='/'>Retour à l'accueil</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>

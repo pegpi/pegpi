@@ -1,0 +1,31 @@
+{# http://flask.pocoo.org/docs/1.0/tutorial/templates/ #}
+{% extends 'base.html' %}
+
+{% block title %}
+PEGPI - Chiffre de Vigenère
+{% endblock %}
+
+{% block pageclass %}page-vigenere{% endblock %}
+
+{% block content %}
+<h1>Le Chiffre de Vigenère</h1>
+<figure>
+    <img src="{{ url_for('static', filename='vigenere_200px.png') }}" alt="Chiffre de Vigenère">
+    <figcaption>Blaise de Vigenère<br />(source wikipedia)</figcaption>
+</figure>
+
+<form id="form_vigenere" method="post" action="{{ url_for('vigenere') }}">
+    {% if params.error !='' %}
+    <p class="erreur">{{ params.error }}</p>
+    {% endif %}
+    <label for="vigenere_message">Message à (dé)chiffrer</label><br /><textarea name="message" id="vigenere_message"
+        rows="8" cols="60">{{ params.message }}</textarea><br />
+    <label for="vigenere_key">Clé</label><br /><input type="text" id="vigenere_key" name="key" value="{{ params.key }}"
+        size="36" class="" /><br />
+    <input type="submit" name="chiffrer" value="Chiffrer" />
+    <input type="submit" name="dechiffrer" value="Déchiffrer" />
+</form>
+{% if params.result !='' %}
+<p>Résultat : {{ params.result }}</p>
+{% endif %}
+{% endblock %}

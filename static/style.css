@@ -1,0 +1,113 @@
+/* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+/* copié collé mais pas tout compris */
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+/* https://www.alsacreations.com/astuce/lire/654-feuille-de-styles-de-base.html */
+/* base font-size corresponds to 10px and is adapted to rem unit */
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    color      : #222;
+    /* gris foncé */
+    font-size: 1.4em;
+    /* equiv 14px */
+    line-height: 1.5;
+    /* adapt to your design */
+}
+html,
+body {
+    margin : 0;
+    padding: 0;
+}
+
+/* google font pour les titres headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Merriweather', serif;
+}
+
+/* html image de fond toute la page : http://css.mammouthland.net/image-de-fond-background-css.php */
+body {
+    background-image : url(/static/matrix.jpg);
+    background-repeat: no-repeat;
+    background-size  : cover;
+    background-attachment: fixed;
+}
+
+#page {
+    /* page web sur toute la hauteur : https://www.alsacreations.com/astuce/lire/51-hauteur-100-element.html */
+    min-height: 100vh;
+    /* pour centrer la page : https://www.alsacreations.com/article/lire/539-Centrer-les-elements-ou-un-site-web-en-CSS.html */
+    width: 960px;
+    margin-left : auto;
+    margin-right: auto;
+    /* marges intérieures */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    /* fond blanc un peu transparent pour voir l'image de fond */
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* https://www.alsacreations.com/article/lire/1337-html5-elements-figure-et-figcaption.html */
+/* pour afficher côte à côte les figures, de la même largeur 200px */
+figure {
+    display   : inline-block;
+    width     : 200px;
+    text-align: center;
+}
+
+figure img {
+    width: 200px;
+}
+
+.page-home #retour-accueil {
+    /* cacher le lien retour accueil quand on est sur la page home */
+    display: none;
+}
+
+/* si le formulaire est mal rempli */
+.erreur {
+    background-color: red;
+    color           : white;
+    padding         : 5px;
+}
+
+/* style du formulaire */
+
+textarea,
+input[type='text'] {
+    background-color: lightcyan;
+}
+
+input[type='submit'] {
+    margin-top      : 20px;
+    margin-right    : 10px;
+    padding         : 8px;
+    border-radius   : 8px;
+    border          : none;
+    background-color: #5f9ea0;
+    color           : white;
+}
+
+input[type='submit']:hover {
+    background-color: #4f8e90;
+}
+
+input[type='submit'],
+label {
+    font-family: 'Merriweather', serif;
+}

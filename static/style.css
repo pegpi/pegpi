@@ -41,16 +41,16 @@ h6 {
 /* html image de fond toute la page : http://css.mammouthland.net/image-de-fond-background-css.php */
 body {
     background-image : url(/static/matrix.jpg);
-    background-repeat: no-repeat;
-    background-size  : cover;
-    background-attachment: fixed;
+    /* background-repeat: no-repeat; */
+    background-size  : cover; /* s'adapte à la taille de fond dispo */
+   /* background-attachment: fixed  ; */
 }
 
 #page {
     /* page web sur toute la hauteur : https://www.alsacreations.com/astuce/lire/51-hauteur-100-element.html */
     min-height: 100vh;
     /* pour centrer la page : https://www.alsacreations.com/article/lire/539-Centrer-les-elements-ou-un-site-web-en-CSS.html */
-    width: 960px;
+    width: 960px; /* largeur classique pour affichage sur touts les écrans */
     margin-left : auto;
     margin-right: auto;
     /* marges intérieures */
@@ -59,7 +59,7 @@ body {
     padding-left: 40px;
     padding-right: 40px;
     /* fond blanc un peu transparent pour voir l'image de fond */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* https://www.alsacreations.com/article/lire/1337-html5-elements-figure-et-figcaption.html */
@@ -84,12 +84,13 @@ figure img {
     background-color: red;
     color           : white;
     padding         : 5px;
+    text-align      : center;
 }
 
 /* style du formulaire */
 
 textarea,
-input[type='text'] {
+input[type='text'] /* input de type text */ {
     background-color: lightcyan;
 }
 
@@ -99,12 +100,12 @@ input[type='submit'] {
     padding         : 8px;
     border-radius   : 8px;
     border          : none;
-    background-color: #5f9ea0;
+    background-color: #5f9ea0; /* RGB = 95, 158, 160 */
     color           : white;
 }
 
 input[type='submit']:hover {
-    background-color: #4f8e90;
+    background-color: #4f8e90; /* le bouton est cliquable quand il est survolé */
 }
 
 input[type='submit'],

@@ -9,23 +9,24 @@ PEGPI - Chiffre de Vigenère
 
 {% block content %}
 <h1>Le Chiffre de Vigenère</h1>
-<figure>
+<figure> {# écriture moderne HTLM pour insérer des images avec titre #}
     <img src="{{ url_for('static', filename='vigenere_200px.png') }}" alt="Chiffre de Vigenère">
-    <figcaption>Blaise de Vigenère<br />(source wikipedia)</figcaption>
+    <figcaption>Blaise de Vigenère<br />(source wikipedia)</figcaption> {# "titre" de l'image en question  #}
 </figure>
 
-<form id="form_vigenere" method="post" action="{{ url_for('vigenere') }}">
+<form id="form_vigenere" method="post" action="{{ url_for('vigenere') }}"> {# on met en place le formulaire de (dé)chiffrage #}
     {% if params.error !='' %}
-    <p class="erreur">{{ params.error }}</p>
+    <p class="erreur">{{ params.error }}</p> {# affiche la valeur python de params.error #}
     {% endif %}
-    <label for="vigenere_message">Message à (dé)chiffrer</label><br /><textarea name="message" id="vigenere_message"
-        rows="8" cols="60">{{ params.message }}</textarea><br />
-    <label for="vigenere_key">Clé</label><br /><input type="text" id="vigenere_key" name="key" value="{{ params.key }}"
-        size="36" class="" /><br />
+    <label for="vigenere_message">Message à (dé)chiffrer</label><br /><textarea name="message" id="vigenere_message" {# champ de saisi du msg avec le name qu on retrouve dans les params #}
+        rows="8" cols="60">{{ params.message }}</textarea><br /> {# le template affiche l entre accolades #}
+    <label for="vigenere_key">Clé</label><br /><input type="text" id="vigenere_key" name="key" value="{{ params.key }}" {# pareil pour key #}
+        size="36" /><br />
+    {# on introduit les boutons chiffrer et déchiffrer #}
     <input type="submit" name="chiffrer" value="Chiffrer" />
     <input type="submit" name="dechiffrer" value="Déchiffrer" />
 </form>
-{% if params.result !='' %}
+{% if params.result !='' %} {# on vérifie qu'il y a bien un résultat et donc pas d'erreurs et on l'affiche #}
 <p>Résultat : {{ params.result }}</p>
 {% endif %}
 {% endblock %}

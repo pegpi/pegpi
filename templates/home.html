@@ -1,11 +1,11 @@
 {# http://flask.pocoo.org/docs/1.0/tutorial/templates/ #}
-{% extends 'base.html' %}
+{% extends 'base.html' %} {# le template home utilise la mise en page définie par base #}
 
-{% block title %}
+{% block title %} {# titre dans la barre d'onglet du navigateur #}
 PEGPI - Accueil
 {% endblock %}
 
-{% block pageclass %}page-home{% endblock %}
+{% block pageclass %}page-home{% endblock %} {# permettre differents sur styles sur plusieurs pages #}
 
 {% block content %}
 <div id="figures">

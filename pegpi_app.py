@@ -5,7 +5,7 @@ from flask import Flask, render_template, url_for, request #url_for : genere les
 
 from vigenere import vigenere_crypt, vigenere_decrypt, vigenere_clean
 
-app = Flask(__name__)
+app = Flask(__name__) #Flask standard
 
 
 @app.route('/')

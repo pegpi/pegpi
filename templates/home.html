@@ -5,8 +5,6 @@
 PEGPI - Accueil
 {% endblock %}
 
-{% block pageclass %}page-home{% endblock %} {# permettre differents sur styles sur plusieurs pages #}
-
 {% block content %}
 <div id="figures">
     <figure>
@@ -16,11 +14,13 @@ PEGPI - Accueil
     <figure>
         <a href='/vigenere'><img src="{{ url_for('static', filename='vigenere_200px.png') }}"
                 alt="Chiffre de Vigenère"></a>
-        <figcaption>Blaise de Vigenère<br />(source wikipedia)</figcaption>
+        <figcaption> <a href = '/vigenere' >Blaise de Vigenère</a><br />(source wikipedia)</figcaption>
     </figure>
     <figure>
         <a href='/rsa'><img src="{{ url_for('static', filename='rsa_200px.png') }}" alt="Chiffrement RSA"></a>
         <figcaption>A compléter</figcaption>
     </figure>
 </div>
+https://fr.wikipedia.org/wiki/Cryptographie
+http://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/index
 {% endblock %}

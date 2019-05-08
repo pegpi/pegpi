@@ -74,10 +74,6 @@ figure img {
     width: 200px;
 }
 
-.page-home #retour-accueil {
-    /* cacher le lien retour accueil quand on est sur la page home */
-    display: none;
-}
 
 /* si le formulaire est mal rempli */
 .erreur {
@@ -111,4 +107,16 @@ input[type='submit']:hover {
 input[type='submit'],
 label {
     font-family: 'Merriweather', serif;
+}
+nav {
+    text-align: center;
+    background: #2fd128;
+    padding : 10px ;
+    margin-bottom : 70px ;
+}
+
+nav a {
+        margin-left : 25px ;
+        margin-right : 25px ;
+}
 }

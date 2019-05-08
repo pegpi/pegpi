@@ -11,7 +11,7 @@ def vigenere_clean(text): # on remplace les accents par leurs propres lettres, t
     clean_text = "".join(letters) # on transforme les lettres de la liste en un mot
     return clean_text
 
-
+#première colone accès par lettres de la clé
 TableVigenere = {'A': "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                   'B': "BCDEFGHIJKLMNOPQRSTUVWXYZA",
                   'C': "CDEFGHIJKLMNOPQRSTUVWXYZAB",
@@ -63,14 +63,14 @@ def vigenere_decrypt(message, key) :
     message = vigenere_clean(message)
     key = vigenere_clean(key)
 
-    decoding_string = ""
+    decrypt_string = ""
     count = 0
 
     for c in message :
         ligne_decrypt = TableVigenere[key[count%len(key)]] # on cherche la ligne de tabvig en question
         pos_decrypt = ligne_decrypt.find(c) # on cherche la pos de c dans la variable
         pos_decrypt += ord('A') # devient le code ascii de la lettre correspondante
-        decoding_string += chr(pos_decrypt)#donne le caractère correspondant au code ascii
+        decrypt_string += chr(pos_decrypt)#donne le caractère correspondant au code ascii
         count += 1
 
-    return decoding_string
+    return decrypt_string

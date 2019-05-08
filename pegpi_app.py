@@ -4,6 +4,7 @@
 from flask import Flask, render_template, url_for, request #url_for : genere les bonnes adresses en fonction du nom du serveur
 
 from vigenere import vigenere_crypt, vigenere_decrypt, vigenere_clean
+from rsa import rsa_crypt, rsa_decrypt
 
 app = Flask(__name__) #Flask standard
 
@@ -48,10 +49,37 @@ def vigenere():
     #params=toutes les données accumulées
 
 
-@app.route('/rsa')
+@app.route('/rsa', methods=['GET', 'POST'])
 def rsa():
-    return render_template('rsa.html')
+    try:
+        mot = request.form['mot']
+    except:
+        mot = ''
 
+    try:
+        p = int(request.form['p'])
+    except:
+        p = 0
+
+    try:
+        q = int(request.form['q'])
+    except:
+        q = 0
+
+    error = ''
+    result = None
+    if mot != '' and p != 0 and q != 0: #le formulaire est rempli donc on peut crypter
+        if 'crypter' in request.form:
+            result = rsa_crypt(p, q, mot)
+            if isinstance(result, str): # erreur dans rsa_crypt
+                error = result # error prend la valeur de result
+                result = None # pas de resultat
+        #else:
+        #    result = vigenere_decrypt(message, key) # on rentre dans result le résultat du décryptage
+    elif request.method == 'POST':
+        error = 'Merci de remplir correctement le formulaire'
+
+    return render_template('rsa.html', params={'mot': mot, 'p': p, 'q': q, 'error': error, 'result': result})
 
 if __name__ == '__main__':
     app.run(debug=True)

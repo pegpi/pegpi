@@ -8,8 +8,27 @@ PEGPI - Chiffrement RSA
 
 {% block content %}
 <h1>Le Chiffrement RSA</h1>
-<figure>
-    <img src="{{ url_for('static', filename='220px-RSA.jpg') }}" alt="Chiffrement RSA">
-    <figcaption>A compléter</figcaption>
-</figure>
+<form id="form_rsa_crypt" method="post" action="{{ url_for('rsa') }}">
+    {% if params.error !='' %}
+    <p class="erreur">{{ params.error }}</p> {# affiche la valeur python de params.error #}
+    {% endif %}
+    <label for="rsa_p">Nombre premier p</label><br /><input type="text" name="p" id="rsa_p" value="{{ params.p }}" {# champ de saisi du msg avec le name qu on retrouve dans les params #}
+        size="10" /><br />
+    <label for="rsa_q">Nombre premier q</label><br /><input type="text" name="q" id="rsa_q" value="{{ params.q }}"
+        size="10" /><br />
+    <label for="rsa_mot">Mot à chiffrer</label><br /><input type="text" name="mot" id="rsa_mot" value="{{ params.mot }}"
+        size="36" /><br />
+    {# on introduit le bouton crypter #}
+    <input type="submit" name="crypter" value="Crypter" />
+</form>
+{% if request.method == "POST" and params.error == '' %} {# la requete etait POST et pas d'erreur donc on a un resultat a afficher #}
+<h2>Résultat</h2>
+<p>Clé publique : {{ params.result["cle_publique"] }}</p>
+<p>Clé privée : {{ params.result["cle_privee"] }}</p>
+<p>Blocks : {{ params.result["blocks"] }}</p>
+{% endif %}
+<h2> En savoir plus sur le chiffrement RSA </h2>
+
+<h3> Quelques liens  </h3>
+
 {% endblock %}

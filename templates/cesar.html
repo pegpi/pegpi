@@ -8,8 +8,30 @@ PEGPI - Chiffre de César
 
 {% block content %}
 <h1>Le Chiffre de César</h1>
-<figure>
-    <img src="{{ url_for('static', filename='220px-Cesar.jpg') }}" alt="Chiffre de César">
-    <figcaption>A compléter</figcaption>
+<figure> {# écriture moderne HTMl pour insérer des images avec titre #}
+    <img src="{{ url_for('static', filename='cesar_200px.png') }}" alt="Chiffre de César">
+    <figcaption>César<br />à compléter</figcaption> {# "titre" de l'image en question  #}
 </figure>
+
+<form id="form_cesar" method="post" action="{{ url_for('cesar') }}"> {# on met en place le formulaire de (dé)chiffrage #}
+    {% if params.error !='' %}
+    <p class="erreur">{{ params.error }}</p> {# affiche la valeur python de params.error #}
+    {% endif %}
+    <label for="cesar_message">Message à (dé)chiffrer</label><br /><textarea name="message" id="cesar_message" {# champ de saisi du msg avec le name qu on retrouve dans les params #}
+        rows="8" cols="60">{{ params.message }}</textarea><br /> {# le template affiche l entre accolades #}
+    <label for="cesar_decalage">Décalage ( positif pour crypter et négatif pour décrypter )</label><br /><input type="text" id="cesar_decalage" name="decalage" value="{{ params.decalage }}" {# pareil pour decalage #}
+        size="36" /><br />
+    {# on introduit les boutons chiffrer et déchiffrer #}
+    <input type="submit" name="chiffrer" value="Chiffrer" />
+</form>
+{% if params.result !='' %} {# on vérifie qu'il y a bien un résultat et donc pas d'erreurs et on l'affiche #}
+<p>Résultat : {{ params.result }}</p>
+{% endif %}
+<h2> En savoir plus sur cesar </h2>
+
+
+
+
+<h3> Quelques liens  </h3>
+
 {% endblock %}

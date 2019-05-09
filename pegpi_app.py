@@ -5,6 +5,7 @@ from flask import Flask, render_template, url_for, request #url_for : genere les
 
 from vigenere import vigenere_crypt, vigenere_decrypt, vigenere_clean
 from rsa import rsa_crypt, rsa_decrypt
+from cesar import encrypt
 
 app = Flask(__name__) #Flask standard
 
@@ -14,9 +15,29 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/cesar')
+@app.route('/cesar', methods=['GET', 'POST'])
 def cesar():
-    return render_template('cesar.html')
+    try: #traite des erreurs lors de l'éxecution du block(tj av except)
+#request est fourni par le module request et donne les infos sur la requête en cours
+        message = request.form['message'] #nettoie tout ce qui n'est pas maj
+    except:
+        message = ''
+
+    try:
+        decalage = int(request.form['decalage'])
+    except:
+        decalage = 0
+#on cherche à transmettre toutes les données nécessaire au template
+    error = ''
+    result = ''
+    if message != '': #le formulaire est rempli donc on peut (dé)chiffrer
+        result = encrypt(message, decalage) # on rentre dans result le résultat
+    elif request.method == 'POST':  #on test que la méthode est POST pour être sur que le formulaire a été rempli
+        error = 'Merci de remplir correctement le formulaire'
+
+    return render_template('cesar.html', params={'message': message, 'decalage': decalage, 'error': error, 'result': result}) #on donne au template les données dont il a besoin
+    #params=toutes les données accumulées
+
 
 #on associe une URL a la fonction qui suit. L'URL vigenere peut être appelé en GET pour un affichage simple
 #peut être appelé en POST dans le cas de l'envoi du formulaire
